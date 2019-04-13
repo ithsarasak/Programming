@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1492662697 source:c:\programming\toi\programming.in.th\11 - normal\1160 - maze\main.cpp
+	<stdio.h>
+	<queue>
+

@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int n, va[600], dp[3][50010], s, t = 1, m;
+int main()
+{
+    scanf("%d %d",&n,&m);
+    for( int i = 0 ; i < n ; i++ ){
+        scanf("%d",&va[i]);
+    }
+    dp[0][0] = 0;
+    dp[1][0] = 1;
+    for( int i = 0 ; i < n ; i++ ){
+        for( int j = 1 ; j <= m ; j++ ){
+            if( j < va[i] ) dp[t][j] = dp[s][j];
+            else if( j == va[i] ) dp[t][j] = dp[s][j] + 1;
+            else{
+                if( j %= va[i] ) dp[t][j] = dp[s][j];
+                else dp[t][j] = dp[s][j] + dp[t][j-va[i]];
+            }
+            printf("%d %d\n",i,j);
+            swap( s, t );
+        }
+    }
+    printf("%d",dp[s][m]);
+    return 0;
+}

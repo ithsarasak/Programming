@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1463042326 source:c:\users\z510\desktop\toi\else\subsetsum\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<algorithm>
+

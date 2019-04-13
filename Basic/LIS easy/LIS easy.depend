@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1491991379 source:c:\programming\toi\else\lis easy\main.cpp
+	<stdio.h>
+	<stack>
+

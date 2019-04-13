@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int n, k, nowpos, stone[100100];
+int main()
+{
+    scanf("%d %d",&n,&k);
+    for( int i = 0 ; i < n ; i++ ){
+        scanf("%d",&stone[i]);
+    }
+
+}

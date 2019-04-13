@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1465310673 source:c:\users\z510\desktop\toi\else\minimum spanning tree\main.cpp
+	<stdio.h>
+	<vector>
+	<queue>
+

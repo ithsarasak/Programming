@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1491986647 source:c:\programming\toi\else\beta mode\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

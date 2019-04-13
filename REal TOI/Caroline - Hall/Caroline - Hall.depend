@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1461217995 source:c:\users\z510\desktop\toi\real toi\caroline - hall\main.cpp
+	<stdio.h>
+	<vector>
+	<queue>
+

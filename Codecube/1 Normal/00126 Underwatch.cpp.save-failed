@@ -1,0 +1,10 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+char time[10][20], ch[15][5][5];
+int main()
+{
+    for( int i = 0 ; i < 3 ; i++ ){
+        gets( time[i] );
+    }
+}

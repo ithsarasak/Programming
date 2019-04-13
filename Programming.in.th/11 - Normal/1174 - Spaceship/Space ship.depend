@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1461156099 source:c:\users\z510\desktop\toi\real toi\space ship\main.cpp
+	<stdio.h>
+	<stdlib.h>
+	<algorithm>
+

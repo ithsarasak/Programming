@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1465225198 source:c:\users\z510\desktop\toi\xcode\shuffle\main.cpp
+	<stdio.h>
+	<vector>
+

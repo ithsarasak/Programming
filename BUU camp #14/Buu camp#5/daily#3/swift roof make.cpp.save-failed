@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int n, m;
+int cow[5100], dp[5100][5100], price[100010];
+int main()
+{
+    memset( dp, 127, sizeof dp );
+    scanf("%d %d",&n,&m);
+    for( int i = 1 ; i <= n ; i++ ){
+        scanf("%d",&cow[i]);
+    }
+    for( int i = 1 ; i <= m ; i++ ){
+        scanf("%d",&price[i]);
+    }
+    for( int i = 0 ; i <= n ; i++ ){
+        dp[0][i] = 0;
+    }
+    for( int i = 0 ; i <= n ; i++ ){
+        dp[i][0] = 0;
+    }
+    for( int i = 1 ; i <= n ; i++ ){
+        for( int j = i ; j > 0 ; j-- ){
+            dp[i] = min( price[cow[i]-cow[j]+1] + dp[j-1], dp[i] );
+        }
+    }
+    printf("%d",dp[n]);
+    return 0;
+}
