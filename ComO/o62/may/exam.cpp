@@ -2,51 +2,51 @@
 
 using namespace std;
 
-const int N = 1e5 + 10;
-int n, k, visit[N], bit[N];
-vector<int> ans, g[N];
-char temp[35];
-queue<int> q;
+const int N = 1e5 + 50;
+int n, k, co, col[N], visit[N], ind[N], posi[N];
+vector<int> g[N], g2[N], all[N], ans;
+stack<int> st;
+char s[N][35];
 
-void bfs( int x ) {
-    fill( visit, visit + n + 1, 0 );
-    q.emplace( x );
-    while( !q.empty() ) {
-        int t = q.front(); q.pop();
-        visit[t] = 1;
-        for( int i : g[t] ) if( !visit[i] ) {
-            visit[i] = 1;
-            q.emplace( i );
-        }
-    }
-    return ;
+void dfs( int now, int p ) {
+    visit[now] = 1;
+    for( int i : g[now] ) if( i != p && !visit[i] ) dfs( i, now );
+    st.push( now );
+}
+
+void dfs2( int now, int p ) {
+    col[now] = co;
+    for( int i : g2[now] ) if( i != p && !col[i] ) dfs2( i, now );
 }
 
 int main()
 {
     scanf("%d %d",&n,&k);
-    for( int i = 1 ; i <= n ; i++ ) {
-        scanf("%s",temp);
-        int len = strlen( temp );
-        for( int j = 0 ; j < len ; j++ ) if( temp[j] == '1' ) bit[i] += ( 1 << ( j ) );
-        //cout << bit[i] << " " << i << endl;
-    } 
-    for( int i = 1 ; i <= n ; i++ ) {
-        for( int j = i + 1 ; j <= n ; j++ ) {
-            if( i == j ) continue ;
-            int x = bit[i] ^ bit[j];
-            //cout << x << " " << bit[i] << " " << bit[j] << endl;
-            if( x & bit[i] ) g[i].emplace_back( j );
-            if( x & bit[j] ) g[j].emplace_back( i );
+    for( int i = 1 ; i <= n ; i++ ) scanf("%s",&s[i][1]);
+    for( int i = 1 ; i <= n ; i++ ) for( int j = 1 ; j <= k ; j++ )
+        if( s[i][j] == '1' ) g[i].emplace_back( n + j ), g2[n+j].emplace_back( i ), posi[n+j]++;
+    for( int i = 1 ; i <= n ; i++ ) for( int j = 1 ; j <= k ; j++ )
+        if( s[i][j] == '0' && posi[n+j] ) g[n+j].emplace_back( i ), g2[i].emplace_back( n+j );
+    for( int i = 1 ; i <= n ; i++ ) if( !visit[i] ) dfs( i, 0 );
+    while( !st.empty() ) {
+        int t = st.top(); st.pop();
+        if( col[t] ) continue ;
+        ++co;
+        dfs2( t, 0 );
+    }
+    for( int i = 1 ; i <= n + k ; i++ ) {
+        all[col[i]].emplace_back( i );
+        for( int j : g[i] ) if( col[j] != col[i] ) ind[col[j]]++;
+    }
+    int cnt = 0;
+    for( int i = 1 ; i <= co ; i++ ) {
+        if( ind[i] == 0 && cnt == 1 ) return !printf("-1");
+        else if( ind[i] == 0 ) {
+            for( int j : all[i] ) if( j <= n ) ans.emplace_back( j );
+            cnt++;
         }
     }
-    for( int i = 1 ; i <= n ; i++ ) {
-        bfs( i );
-        int cc = 0;
-        for( int j = 1 ; j <= n ; j++ ) if( !visit[j] ) cc = 1;
-        if( !cc ) ans.emplace_back( i );
-    }
-    if( ans.empty() ) printf("-1");
-    else for( int i : ans ) printf("%d ",i);
+    sort( ans.begin(), ans.end() );
+    for( int i : ans ) printf("%d ",i);
     return 0;
 }

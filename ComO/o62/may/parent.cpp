@@ -3,7 +3,7 @@
 using namespace std;
 
 const int N = 1e5 + 10;
-int n, m, master[N], par[N], mic[20][N], visit[N], lv[N], chk, a[N], b[N], op[N];
+int n, m, master[N], par[N], mic[20][N], visit[N], lv[N], chk, a[3*N], b[3*N], op[3*N];
 vector<int> g[N];
 queue<int> q;
 
