@@ -44,16 +44,13 @@ void sack( int now, int p, bool keep ) {
 	}
 	if( !keep ) m.clear();
 }
-int main()
-{
-	scanf("%d %lld",&n,&k);
-	for( int i = 0, u, v ; i < n - 1 ; i++ ) {
-		long long d;
-		scanf("%d %d %lld",&u,&v,&d);
-		u++, v++;
-		g[u].emplace_back( pii( v , d ) ), g[v].emplace_back( pii( u, d ) );
+
+int best_path( int N, int K, int H[][2], int L[] ) {
+	n = N, k = K; 
+	for( int i = 0 ; i < n - 1 ; i++ ) {
+		g[H[i][0]+1].emplace_back( pii( H[i][1] + 1, L[i] ) );
+		g[H[i][1]+1].emplace_back( pii( H[i][0] + 1, L[i] ) );
 	}
 	pre( 1, 0 ), sack( 1, 0, 1 );
-	printf("%d", ( ans != 1e9 ) ? ans : -1 );
-	return 0;
+	return ( ans != 1e9 ) ? ans : -1;
 }
