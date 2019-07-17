@@ -37,7 +37,7 @@ export default class extends React.Component {
                     <div className="card-wrapper">
                         <Card 
                             title="Next Question"
-                            description="มาลุยโจทย์ข้อต่อไปกันดีกว่า~"
+                            description="มาลุยโจทย์ข้อต่อไปกันดีกว่านะvbvb"
                             icon="next_week"
                             to="/task"
                             linkCard
