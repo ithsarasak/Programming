@@ -15,7 +15,7 @@ int chk( long long a, long long b ) {
     temp = inf / a;
     if( b > temp ) return 1;
     else return 0 ;
-}
+}       
 
 void process( long long mul ) {
     //cout << mul << endl;
