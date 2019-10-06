@@ -36,7 +36,7 @@ void build_centroid(int u, int p, pii ret = pii(1e9, -1)) {
 	dfs(u, u, cdep[u]);
 	for(int v : g[u]) if(!chk[v]) build_centroid(v, u);
 }
- 
+
 int dist[N];
  
 void update(int u) {
