@@ -14,7 +14,7 @@ long long a[N], dp[K][N];
 long long get( pll a, long long x ) { return a.m*x + a.c; }
 long long p2( long long num ) { return num * num; }
 void update( pll li, long long s, int idx = 1, int l = 1, int r = N - 9 ) {
-    if( s != chk[idx] ) {
+    if( s != chk[idx] ) 
         chk[idx] = s;
         return void( seg[idx] = li );
     }
