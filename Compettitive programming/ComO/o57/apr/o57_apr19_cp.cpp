@@ -70,7 +70,7 @@ int main()
 				continue;
 			}
 			int mx = 0, mid = pos[wood];
-			if( it != red.end() ) mx = query( mid, *it - 1 );
+			if( it != red.end() ) mx = max( mx, query( mid, *it - 1 ) );
 			if( it != red.begin() ) {
 				it--;
 				mx = max( mx, query( *it, mid - 1 ) );
